@@ -1,6 +1,6 @@
 %define name    lam
 %define version 7.1.3
-%define release %mkrel 1
+%define release %mkrel 2
 %define major           7
 %define libname %mklibname %name %{major}
 
@@ -9,7 +9,7 @@ Version: 	    %{version}
 Release: 	    %{release}
 Summary:        The LAM (Local Area Multicomputer) programming environment.
 License: 	    BSD
-Group: 		    Development/Other
+Group: 		    System/Cluster
 URL: 		    http://www.lam-mpi.org/
 Source: 	    %{name}-%{version}.tar.bz2
 Source3:	    rhosts
@@ -46,7 +46,7 @@ runtime or post-mortem.
 
 %package 	devel
 Summary: 	Development binaries for lam environment
-Group: 		Development/Other
+Group: 		System/Cluster
 Requires:	%{libname}-devel = %{version}
 Conflicts:  mpic++
 Conflicts:  mpicc
@@ -60,7 +60,7 @@ LAM development binaries for compiling parallel programs.
 
 %package 	doc
 Summary: 	Documentation for developing programs that will use lam-mpi
-Group: 		Development/Other
+Group: 		System/Cluster
 
 %description doc
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
@@ -93,7 +93,7 @@ applications using the lam libraries.
 
 %package 	-n %{libname}-devel
 Summary: 	Headers for developing programs that will use lam-mpi
-Group: 		Development/Other
+Group: 		System/Cluster
 Conflicts:  mpich2-devel
 Conflicts:  mpich1-devel
 
