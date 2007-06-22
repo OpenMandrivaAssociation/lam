@@ -4,19 +4,19 @@
 %define major           7
 %define libname %mklibname %name %{major}
 
-Name: 		    %{name}
-Version: 	    %{version}
-Release: 	    %{release}
-Summary:        The LAM (Local Area Multicomputer) programming environment.
-License: 	    BSD
-Group: 		    System/Cluster
-URL: 		    http://www.lam-mpi.org/
-Source: 	    %{name}-%{version}.tar.bz2
-Source3:	    rhosts
-Source4:	    test_mpi.c
-Obsoletes:      %{name}-runtime
-BuildRequires: 	gcc-gfortran
-BuildRoot: 	    %{_tmppath}/%{name}-%{version}
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Summary:	The LAM (Local Area Multicomputer) programming environment
+License:	BSD
+Group:		System/Cluster
+URL:		http://www.lam-mpi.org/
+Source:		%{name}-%{version}.tar.bz2
+Source3:	rhosts
+Source4:	test_mpi.c
+Obsoletes:	%{name}-runtime
+BuildRequires:	gcc-gfortran
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description 
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
@@ -44,21 +44,21 @@ main LAM website). On the second level, the MPI library can produce a
 cumulative record of communication, which can be visualized either at
 runtime or post-mortem.
 
-%package 	devel
+%package devel
 Summary: 	Development binaries for lam environment
-Group: 		System/Cluster
+Group:		System/Cluster
 Requires:	%{libname}-devel = %{version}
-Conflicts:  mpic++
-Conflicts:  mpicc
-Conflicts:  mpif77
-Conflicts:  mpich2
-Conflicts:  mpi2cc
-Conflicts:  mpi2f77
+Conflicts:	mpic++
+Conflicts:	mpicc
+Conflicts:	mpif77
+Conflicts:	mpich2
+Conflicts:	mpi2cc
+Conflicts:	mpi2f77
 
 %description devel
 LAM development binaries for compiling parallel programs.
 
-%package 	doc
+%package doc
 Summary: 	Documentation for developing programs that will use lam-mpi
 Group: 		System/Cluster
 
@@ -91,11 +91,11 @@ runtime or post-mortem.
 This package provides the documentation needed to develop
 applications using the lam libraries.
 
-%package 	-n %{libname}-devel
+%package -n %{libname}-devel
 Summary: 	Headers for developing programs that will use lam-mpi
-Group: 		System/Cluster
-Conflicts:  mpich2-devel
-Conflicts:  mpich1-devel
+Group:		System/Cluster
+Conflicts:	mpich2-devel
+Conflicts:	mpich1-devel
 
 %description -n %{libname}-devel
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
