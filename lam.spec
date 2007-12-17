@@ -16,7 +16,6 @@ Source3:	rhosts
 Source4:	test_mpi.c
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description 
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
