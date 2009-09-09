@@ -16,6 +16,7 @@ Source3:	rhosts
 Source4:	test_mpi.c
 Patch0:		lamdebug_formatliteral.patch
 Patch1:		show_help_formatliteral.patch
+Patch2:		bfctl_formatliteral.patch
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -132,6 +133,7 @@ applications using the lam libraries.
 %setup -q -n %{name}-%{version}
 %patch0
 %patch1
+%patch2
 
 %build
 %configure2_5x --sysconfdir=%{_sysconfdir}/lam \
