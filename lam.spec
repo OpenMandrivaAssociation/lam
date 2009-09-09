@@ -1,6 +1,6 @@
 %define name    lam
-%define version 7.1.3
-%define release %mkrel 5
+%define version 7.1.4
+%define release %mkrel 1
 %define major           7
 %define libname %mklibname %name %{major}
 
@@ -14,6 +14,8 @@ URL:		http://www.lam-mpi.org/
 Source:		%{name}-%{version}.tar.bz2
 Source3:	rhosts
 Source4:	test_mpi.c
+Patch0:		lamdebug_formatliteral.patch
+Patch1:		show_help_formatliteral.patch
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -128,9 +130,11 @@ applications using the lam libraries.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0
+%patch1
 
 %build
-%configure --sysconfdir=%{_sysconfdir}/lam \
+%configure2_5x --sysconfdir=%{_sysconfdir}/lam \
 	--with-rpi=sysv \
 	--with-rsh=%{_bindir}/rsh \
 	--with-trillium \
