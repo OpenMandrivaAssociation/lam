@@ -1,6 +1,6 @@
 %define name    lam
 %define version 7.1.4
-%define release %mkrel 2
+%define release %mkrel 1
 %define major           7
 %define libname %mklibname %name %{major}
 
@@ -16,7 +16,9 @@ Source3:	rhosts
 Source4:	test_mpi.c
 Patch0:		lamdebug_formatliteral.patch
 Patch1:		show_help_formatliteral.patch
-Patch2:		bfctl_formatliteral.patch
+Patch2:		fprintfusage_formatliteral.patch
+Patch3:		lamgrow_formatliteral.patch
+Patch4:		mpitask_formatliteral.patch
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -134,6 +136,8 @@ applications using the lam libraries.
 %patch0
 %patch1
 %patch2
+%patch3
+%patch4
 
 %build
 %configure2_5x --sysconfdir=%{_sysconfdir}/lam \
