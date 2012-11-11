@@ -1,0 +1,12 @@
+diff -p -up ./otb/lamgrow/lamgrow.c_orig ./otb/lamgrow/lamgrow.c
+--- ./otb/lamgrow/lamgrow.c_orig	2009-09-10 11:38:36.000000000 +0200
++++ ./otb/lamgrow/lamgrow.c	2009-09-10 11:39:00.000000000 +0200
+@@ -517,7 +517,7 @@ cleanup(char *context)
+ 
+   err_save = errno;
+   if (context != NULL)
+-    printf(context);
++    printf("%s", context);
+ 
+   if (NULL != new_hostname) {
+     sfh_argv_add(&cmdn, &cmdv, DEFTWIPE);

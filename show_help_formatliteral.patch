@@ -1,0 +1,39 @@
+diff -p -up ./share/etc/show_help.c_orig ./share/etc/show_help.c
+--- ./share/etc/show_help.c_orig	2009-09-10 00:37:55.000000000 +0200
++++ ./share/etc/show_help.c	2009-09-10 00:39:24.000000000 +0200
+@@ -205,7 +205,7 @@ read_help(const char *filename, const ch
+ 
+   fp = open_helpfile(filename);
+   if (fp == NULL) {
+-    fprintf(stderr, line);
++    fprintf(stderr, "%s\n", line);
+     fprintf(stderr, "*** Oops -- I cannot open the LAM help file.\n");
+     if (found_helpfile) {
+       fprintf(stderr, "*** I found at least one helpfile, but some error prevented me from\n");
+@@ -232,7 +232,7 @@ read_help(const char *filename, const ch
+     fprintf(stderr, "*** about the topic \"%s\"\n", topic);
+     fprintf(stderr, "***\n");
+     fprintf(stderr, "*** Sorry!\n");
+-    fprintf(stderr, line);
++    fprintf(stderr, "%s\n", line);
+ 
+     return NULL;
+   }
+@@ -257,7 +257,7 @@ read_help(const char *filename, const ch
+   /* Did we find it? */
+ 
+   if (!found) {
+-    fprintf(stderr, line);
++    fprintf(stderr, "%s\n", line);
+     fprintf(stderr, "*** Oops -- cannot find the help that you're supposed to get.\n");
+     fprintf(stderr, "*** Using the following help file:\n");
+     fprintf(stderr, "***\n");
+@@ -270,7 +270,7 @@ read_help(const char *filename, const ch
+     fprintf(stderr, "*** But it doesn't seem to be in that file.\n");
+     fprintf(stderr, "***\n");
+     fprintf(stderr, "*** Sorry!\n");
+-    fprintf(stderr, line);
++    fprintf(stderr, "%s\n", line);
+ 
+     return NULL;
+   }

@@ -1,0 +1,12 @@
+diff -p -up ./otb/mpitask/mpitask.c_orig ./otb/mpitask/mpitask.c
+--- ./otb/mpitask/mpitask.c_orig	2009-09-10 11:54:00.000000000 +0200
++++ ./otb/mpitask/mpitask.c	2009-09-10 11:54:33.000000000 +0200
+@@ -323,7 +323,7 @@ bs_state_out(int4 nodeid, struct pstate*
+ 					mpiblk_state_out(nodeid, pstat);
+ 					return;
+ 				} else {
+-					sprintf(func_str,
++				        sprintf(func_str,"%s",
+ 						blktype(fyi->fyp_func));
+ 				}
+ 			}

@@ -1,0 +1,26 @@
+diff -p -up ./share/etc/lamdebug.c_orig ./share/etc/lamdebug.c
+--- ./share/etc/lamdebug.c_orig	2009-09-10 00:26:05.000000000 +0200
++++ ./share/etc/lamdebug.c	2009-09-10 00:27:25.000000000 +0200
+@@ -310,19 +310,19 @@ lam_debug_output_low(int lam_debug_id, c
+     /* Syslog output */
+ 
+     if (ldi->ldi_syslog == 1)
+-      syslog(ldi->ldi_syslog_priority, str);
++      syslog(ldi->ldi_syslog_priority, "%s",str);
+ 
+     /* stdout output */
+ 
+     if (ldi->ldi_stdout) {
+-      printf(temp_str);
++      printf("%s", temp_str);
+       fflush(stdout);
+     }
+ 
+     /* stderr output */
+ 
+     if (ldi->ldi_stderr) {
+-      fprintf(stderr, temp_str);
++      fprintf(stderr, "%s", temp_str);
+       fflush(stderr);
+     }
+ 
