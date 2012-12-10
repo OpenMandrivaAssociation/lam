@@ -1,0 +1,4 @@
+#The .rhosts should be copied in the home directory
+#Syntax is
+#hostto allow		user allowed for this host
+#server			mpi

@@ -1,6 +1,6 @@
 %define name    lam
 %define version 7.1.4
-%define release %mkrel 2
+%define release 2
 %define major           7
 %define libname %mklibname %name %{major}
 
@@ -11,7 +11,7 @@ Summary:	The LAM (Local Area Multicomputer) programming environment
 License:	BSD
 Group:		System/Cluster
 URL:		http://www.lam-mpi.org/
-Source:		%{name}-%{version}.tar.bz2
+Source0:		%{name}-%{version}.tar.bz2
 Source3:	rhosts
 Source4:	test_mpi.c
 Patch0:		lamdebug_formatliteral.patch
@@ -21,7 +21,6 @@ Patch3:		lamgrow_formatliteral.patch
 Patch4:		mpitask_formatliteral.patch
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description 
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
@@ -149,7 +148,6 @@ applications using the lam libraries.
 %make all
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
@@ -183,9 +181,6 @@ Post-installation procedure:
 - create a user with constant uid/gid and shared home directory on all nodes
 - ensure this user has rsh/ssh access to all nodes
 EOF
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -247,17 +242,9 @@ rm -rf %{buildroot}
 %{_mandir}/man1/tping.*
 %{_mandir}/man1/laminfo.*
 %{_mandir}/man1/mpiexec-lam.*
-%{_mandir}/man7/lamssi.*
-%{_mandir}/man7/lamssi_boot.*
-%{_mandir}/man7/lamssi_coll.*
-%{_mandir}/man7/lamssi_cr.*
-%{_mandir}/man7/lamssi_rpi.*
 %{_mandir}/man1/lamcheckpoint.*
 %{_mandir}/man1/lamrestart.*
 %{_mandir}/man1/lamwipe.*
-%{_mandir}/man3/MPI_Alltoallw.*
-%{_mandir}/man3/MPI_Exscan.*
-%{_mandir}/man7/libmpi.*
 # For Trillium Option
 %{_bindir}/bfctl
 %{_bindir}/bfstate
@@ -316,3 +303,159 @@ rm -rf %{buildroot}
 %{_includedir}/*
 %{_mandir}/man2/*
 %{_mandir}/man3/*
+
+
+%changelog
+* Mon Dec 06 2010 Oden Eriksson <oeriksson@mandriva.com> 7.1.4-2mdv2011.0
++ Revision: 612694
+- the mass rebuild of 2010.1 packages
+
+* Thu Sep 10 2009 Stéphane Téletchéa <steletch@mandriva.org> 7.1.4-1mdv2010.0
++ Revision: 436576
+- Updated format fixes
+- Back to 0.7.4-1 since no other build passed the bs
+- More format string fixes
+- Update to latest stable release
+- Use new configure macro
+- Correct format string for some files
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 7.1.3-2mdv2008.1
++ Revision: 136535
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - fix man pages
+
+* Fri Jun 22 2007 Nicolas Vigier <nvigier@mandriva.com> 7.1.3-2mdv2008.0
++ Revision: 43001
+- remove dot from summary (for rpmlint warning)
+- use tabs instead of a mix of spaces and tabs
+- Change group to System/Cluster
+
+* Fri May 25 2007 Nicolas Vigier <nvigier@mandriva.com> 7.1.3-1mdv2008.0
++ Revision: 31099
+- update to version 7.1.3
+- Import lam
+
+
+
+* Thu Aug 31 2006 Guillaume Rousse <guillomovitch@mandriva.org> 7.1.2-3mdv2007.0
+- better consistency with mpich package:
+ - rename lam-runtime subpackage to lam
+ - no more user creation in %%post, as it was too simplist to work, but advertise
+   post-installation procedure through README.urpmi
+- fix conflicts by renaming binaries in runtime package, with explicit conflicts in devel package
+- move doc files in standard location
+- move man pages from doc to lib devel package
+- drop %%preun script, another solution is still needed
+- spec cleanups
+
+* Thu Jun 22 2006 Erwan Velu <erwan@seanodes.com> 7.1.2-2
+- FixingP provides
+
+* Wed Jun 13 2006 Erwan Velu <erwan@seanodes.com> 7.1.2-1mdk
+- 7.1.2
+- Removing gfortan hardcoded version
+- There is no need to Buildrequires libmpich2_1-devel
+
+* Fri Oct 28 2005 Antoine Ginies <aginies@n1.mandriva.com> 7.1.1-3mdk
+- fix attr pb
+
+* Fri Oct 28 2005 Antoine Ginies <aginies@n1.mandriva.com> 7.1.1-2mdk
+- remove unwanted link to mpic++.h
+- add missing Buildrequire: libmpich2_1-devel
+
+* Wed Aug 24 2005 Erwan Velu <erwan@seanodes.com> 7.1.1-1mdk
+- 7.1.1
+- Using gfortan instead of gcc-f77
+* Fri Jun 25 2004 Erwan Velu <erwan@mandrakesoft.com> 7.0.6-2mdk
+- Rebuild
+* Fri Jun 11 2004 Erwan Velu <erwan@mandrakesoft.com> 7.0.6-1mdk
+- 7.0.6
+* Fri Feb 26 2004 Erwan Velu <erwan@mandrakesoft.com> 7.0.4-2mdk
+- Rebuild
+* Thu Feb 19 2004 Erwan Velu <erwan@mandrakesoft.com> 7.0.4-1mdk
+- New release (waow since a really long time)
+* Wed May 28 2003 Erwan Velu <erwan@mandrakesoft.com> 6.5.9-4mdk
+- Removing mklibname
+* Wed May 28 2003 Erwan Velu <erwan@mandrakesoft.com> 6.5.9-3mdk
+- ifarching x86_64
+* Wed  Jan 29 2003 Erwan Velu <erwan@mandrakesoft.com> 6.5.9-2mdk
+- Final release
+* Mon Jan 20 2003 Erwan Velu <erwan@mandrakesoft.com> 6.5.9-1mdk
+- New version
+* Thu Jan 16 2003 Erwan Velu <erwan@mandrakesoft.com> 6.5.8-4mdk
+- Rebuild for new glibc
+- Fixing missing errno.h
+* Wed Nov 20 2002 Clic-dev <clic-dev-public@mandrakesoft.com> 6.5.8-3mdk
+- Fixing missing files
+* Wed Nov 20 2002 Clic-dev <clic-dev-public@mandrakesoft.com> 6.5.8-2mdk
+- Relocating lam binaries 
+- Changing mpirun to mpirun-lam for removing conflicts with mpich
+* Wed Nov 20 2002 Clic-dev <clic-dev-public@mandrakesoft.com> 6.5.8-1mdk
+- New version
+- Fixing path for removing conflicts with mpich
+- Changing mpirun.1 in mpirun-lam.1 to avoid mpich conflict
+* Mon Sep 02 2002 Lenny Cartier <lenny@mandrakesodft.com> 6.5.6-16mdk
+- rebuild
+* Tue Aug 6 2002 Antoine Ginies <aginies@mandrakesoft.com> 6.5.6-15mdk
+- build with gcc 3.2
+* Mon Jun 17 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-14mdk
+- Fixing missing requires
+- Adding noreplace on config files
+* Thu Jun 06 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-13mdk
+- Fixing mpi user id
+- Fixing wrong perm on sample script
+* Wed Jun 05 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-12mdk
+- Fixing .bashrc for mpi
+* Tue Jun 04 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-11mdk
+- Fixing conflict between libmpich0-devel and lam-doc
+* Tue Jun 04 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-10mdk
+- Fixing wrong right on sample script
+- Changing sample script
+* Fri May 31 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-9mdk
+- Removing virtual MPI provides
+- Adding hello world mpi sample program
+* Tue May 28 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-8mdk
+- Adding conflicts on all packages
+
+* Tue May 28 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-7mdk
+- Stopping lam before uninstalling package
+
+* Mon May 27 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-6mdk
+- Fixing late friday changes :-)
+- Proving virtual Mpi is now fixed
+
+* Fri May 24 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-5mdk
+- Adding mpi user
+- Providing virtual Mpi
+- Adding sample rhost configuration file
+
+* Fri May 24 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-4mdk
+- Added Trillium option (devel option), man pages and binaries
+- Creating devel package
+- Cleaning liblam0-devel package
+
+* Fri May 24 2002 Erwan Velu <erwan@mandrakesoft.com> 6.5.6-3mdk
+- Gcc 3.1 build
+- Cleaning Spec file
+
+* Tue Nov 27 2001 Ludovic Francois <lfrancois@mandrakesoft.com> 6.5.6-2mdk
+- Added Conflict tag for mpich conflicts
+
+* Tue Nov 27 2001 Ludovic Francois <lfrancois@mandrakesoft.com> 6.5.6-1mdk
+- 6.5.6
+
+* Fri Nov 23 2001 Ludovic Francois <lfrancois@mandrakesoft.com> 6.5.5-3mdk
+- Added include files missed from last upload
+
+* Thu Nov 22 2001 Ludovic Francois <lfrancois@mandrakesoft.com> 6.5.5-2mdk
+- rebuild
+
+* Mon Nov 19 2001 Ludovic Francois <lfrancois@mandrakesoft.com> 6.5.5-1mdk
+- First version of the package
