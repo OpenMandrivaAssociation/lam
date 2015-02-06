@@ -1,6 +1,6 @@
 %define name    lam
 %define version 7.1.4
-%define release 2
+%define release 3
 %define major           7
 %define libname %mklibname %name %{major}
 
