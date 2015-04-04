@@ -21,6 +21,7 @@ Patch3:		lamgrow_formatliteral.patch
 Patch4:		mpitask_formatliteral.patch
 Obsoletes:	%{name}-runtime
 BuildRequires:	gcc-gfortran
+BuildRequires:	gcc-c++, gcc, gcc-cpp
 
 %description 
 LAM (Local Area Multicomputer) is an Message-Passing Interface (MPI)
@@ -139,6 +140,10 @@ applications using the lam libraries.
 %patch4
 
 %build
+# clang don't support the bool data type
+export CC=gcc
+export CXX=g++
+
 %configure2_5x --sysconfdir=%{_sysconfdir}/lam \
 	--with-rpi=sysv \
 	--with-rsh=%{_bindir}/rsh \
