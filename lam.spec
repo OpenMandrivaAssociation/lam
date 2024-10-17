@@ -10,7 +10,7 @@ Release:	%{release}
 Summary:	The LAM (Local Area Multicomputer) programming environment
 License:	BSD
 Group:		System/Cluster
-URL:		http://www.lam-mpi.org/
+URL:		https://www.lam-mpi.org/
 Source0:		%{name}-%{version}.tar.bz2
 Source3:	rhosts
 Source4:	test_mpi.c
