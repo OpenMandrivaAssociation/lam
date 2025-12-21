@@ -20,6 +20,11 @@ Patch2:		fprintfusage_formatliteral.patch
 Patch3:		lamgrow_formatliteral.patch
 Patch4:		mpitask_formatliteral.patch
 Obsoletes:	%{name}-runtime
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gcc-gfortran
 BuildRequires:	gcc-c++, gcc, gcc-cpp
 
